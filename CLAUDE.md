@@ -65,7 +65,7 @@ Client Business Name/
 - Always use direct image URLs (right click → Copy Image Address)
 - Never use Unsplash page URLs — always extract the direct 
   images.unsplash.com URL
-- Always add loading="lazy" to every image for performance
+- Add loading="lazy" to every image below the fold. Never lazy-load above-the-fold images (nav logo, hero image).
 - Always add descriptive alt text to every image for accessibility
 - Always use object-fit: cover and object-position: center
 - File extensions must be lowercase — .jpg not .JPG or .JPEG
