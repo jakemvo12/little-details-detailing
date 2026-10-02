@@ -42,6 +42,8 @@
     backdrop.hidden = false;
     // A tap/click open keeps the close button hidden until the keyboard is used
     drawer.toggleAttribute('data-pointer-open', byPointer);
+    // A keyboard open reserves the close button's row so links never shift
+    drawer.toggleAttribute('data-keyboard-open', !byPointer);
     // Force a reflow so the slide-in transition runs from the closed position
     void drawer.offsetWidth;
     drawer.classList.add('is-open');
@@ -76,6 +78,7 @@
       drawer.hidden = true;
       backdrop.hidden = true;
       drawer.removeAttribute('data-pointer-open');
+      drawer.removeAttribute('data-keyboard-open');
     }, CLOSE_HIDE_MS);
 
     if (returnFocus) toggle.focus();

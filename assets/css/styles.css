@@ -590,7 +590,7 @@ button {
     transform: scale(0.96);
   }
 
-  .drawer__close:not(:focus-visible),
+  .drawer:not([data-keyboard-open]) .drawer__close:not(:focus-visible),
   .drawer[data-pointer-open] .drawer__close {
     position: absolute;
     width: 1px;
@@ -602,6 +602,13 @@ button {
     overflow: hidden;
     white-space: nowrap;
     clip-path: inset(50%);
+  }
+
+  /* Keyboard-opened drawer: keep the close button's row reserved while it
+     doesn't have focus, so the links never shift as focus moves */
+  .drawer[data-keyboard-open] .drawer__close:not(:focus-visible) {
+    opacity: 0;
+    pointer-events: none;
   }
 
   .drawer-backdrop[hidden],
