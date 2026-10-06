@@ -90,6 +90,21 @@
   --dur-fast: 150ms;
   --dur-base: 250ms;
   --dur-drawer: 320ms;
+
+  /* Hero */
+  --fs-hero-title: clamp(2.75rem, 1.6rem + 3.4vw, 4.5rem);
+  --fs-hero-sub: 1.125rem;
+  --fs-hero-accent: 1rem;
+  --hero-height: calc(85vh - var(--nav-height));
+  --btn-height-lg: 52px;
+  --color-teal-tint: rgb(12 192 220 / 0.12);
+}
+
+/* Small-viewport units keep mobile browser toolbars from breaking the hero */
+@supports (height: 1svh) {
+  :root {
+    --hero-height: calc(85svh - var(--nav-height));
+  }
 }
 
 /* ==========================================================================
@@ -673,6 +688,174 @@ button {
 
   .drawer {
     padding-inline: var(--space-4);
+  }
+}
+
+/* ==========================================================================
+   Buttons — large + outline variants (hero)
+   ========================================================================== */
+
+.btn--lg {
+  min-height: var(--btn-height-lg);
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--fs-body);
+}
+
+.btn--outline {
+  border: 1.5px solid var(--color-teal);
+  background: transparent;
+  color: var(--color-heading);
+}
+
+/* Teal tint layer fades in on hover */
+.btn--outline::after {
+  background: var(--color-teal-tint);
+}
+
+.btn--outline:hover,
+.btn--outline:focus-visible {
+  transform: translateY(-1px);
+}
+
+.btn--outline:hover::after,
+.btn--outline:focus-visible::after {
+  opacity: 1;
+}
+
+.btn--outline:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn--outline:active::after {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Hero
+   Desktop: photo fills the space right of the text column and fades into
+   base black over its left quarter and bottom; left-aligned text sits on black.
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: var(--hero-height);
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+/* The photo starts just past the text column (page edge + gutter + 36rem),
+   so the text always sits on black and never over the car */
+.hero__media {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: calc(max(0px, (100% - var(--container-max)) / 2) + var(--gutter) + 36rem);
+  z-index: -1;
+}
+
+.hero__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, var(--color-bg) 0%, transparent 25%),
+    linear-gradient(to top, var(--color-bg) 0%, transparent 15%);
+}
+
+.hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero__content {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: var(--section-pad);
+  padding-inline: var(--gutter);
+}
+
+.hero__accent {
+  margin: 0 0 var(--space-4);
+  color: var(--color-teal);
+  font-family: var(--font-display);
+  font-size: var(--fs-hero-accent);
+  font-weight: 600;
+  letter-spacing: var(--tracking-nav);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.hero__title {
+  margin-bottom: var(--space-5);
+  font-size: var(--fs-hero-title);
+  line-height: 1;
+}
+
+.hero__sub {
+  max-width: 30rem;
+  margin: 0 0 var(--space-6);
+  color: var(--color-body);
+  font-size: var(--fs-hero-sub);
+  line-height: var(--leading-body);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/* Tablet — max-width 1024px */
+@media (max-width: 1024px) {
+  .hero__sub {
+    max-width: 26rem;
+  }
+}
+
+/* Mobile — max-width 768px: square photo on top, text below over its lower part */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: stretch;
+  }
+
+  .hero__media {
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .hero__media::after {
+    background: linear-gradient(to bottom, transparent 66%, var(--color-bg) 100%);
+  }
+
+  .hero__content {
+    padding: var(--space-6) var(--gutter);
+  }
+
+  .hero__break {
+    display: none;
+  }
+}
+
+/* Small mobile — max-width 480px: buttons stack full-width */
+@media (max-width: 480px) {
+  .hero__actions {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .hero__actions .btn {
+    width: 100%;
   }
 }
 
