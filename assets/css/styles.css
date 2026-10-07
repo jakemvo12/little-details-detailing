@@ -104,6 +104,10 @@
   --fs-card-title: 1.75rem;
   --fs-label: 0.875rem;
   --card-media-ratio: 4 / 3;
+
+  /* Areas map */
+  --map-height: 30rem;
+  --color-teal-fill: rgb(12 192 220 / 0.15);
 }
 
 /* Small-viewport units keep mobile browser toolbars from breaking the hero */
@@ -1145,6 +1149,399 @@ button {
   }
 
   .services__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ==========================================================================
+   Areas We Serve
+   ========================================================================== */
+
+.areas {
+  padding: var(--section-pad);
+  background: var(--color-bg);
+}
+
+.areas__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.areas__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-7);
+}
+
+.areas__title {
+  font-size: var(--fs-section-title);
+}
+
+.areas__title-muted {
+  color: var(--color-muted);
+}
+
+.areas__intro {
+  max-width: 26rem;
+  margin: 0;
+  color: var(--color-body);
+}
+
+/* List ~5/12, map + bar ~7/12; both columns share one height */
+.areas__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: stretch;
+  gap: var(--space-5);
+}
+
+.areas__side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.areas__list {
+  display: grid;
+  flex: 1;
+  grid-auto-rows: 1fr;
+  gap: var(--space-2);
+}
+
+/* Town row */
+.areas__town {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  width: 100%;
+  height: 100%;
+  min-height: var(--tap-size);
+  padding: var(--space-3) var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-elevated);
+  color: var(--color-heading);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+/* Hover: the border brightens (opacity layer) */
+.areas__town::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border: 1px solid var(--color-muted);
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.areas__town:hover::after,
+.areas__town:focus-visible::after {
+  opacity: 1;
+}
+
+.areas__town:active {
+  transform: translateY(1px);
+}
+
+.areas__zip {
+  color: var(--color-muted);
+  font-family: var(--font-display);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-nav);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Selected: teal border, tinted background, teal zip, 3px teal bar (shape cue) */
+.areas__town[aria-pressed='true'] {
+  border-color: var(--color-teal);
+  background: linear-gradient(var(--color-teal-fill), var(--color-teal-fill)), var(--color-surface-elevated);
+}
+
+.areas__town[aria-pressed='true']::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  width: 3px;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  background: var(--color-teal);
+}
+
+.areas__town[aria-pressed='true']::after {
+  opacity: 0;
+}
+
+.areas__town[aria-pressed='true'] .areas__zip {
+  color: var(--color-teal);
+}
+
+/* "Don't see your town?" line */
+.areas__call {
+  margin: 0;
+  color: var(--color-body);
+}
+
+.areas__call-link {
+  position: relative;
+  display: inline-block;
+  color: var(--color-teal);
+  font-weight: 600;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.areas__call-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-teal);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.areas__call-link:hover::after,
+.areas__call-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.areas__call-link:active {
+  transform: translateY(1px);
+}
+
+/* Map column */
+.areas__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Space is reserved up front so nothing shifts when the map loads */
+.areas__map {
+  position: relative;
+  height: var(--map-height);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-elevated);
+}
+
+.areas__map[hidden] {
+  display: none;
+}
+
+/* Leaflet overrides — the dark filter applies to the tiles only */
+.areas__map.leaflet-container {
+  background: var(--color-surface-elevated);
+  font-family: var(--font-body);
+}
+
+.areas__map.leaflet-container .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9) saturate(0.3);
+}
+
+.areas__map.leaflet-container .leaflet-bar {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-elevated);
+}
+
+.areas__map.leaflet-container .leaflet-bar a,
+.areas__map.leaflet-container .leaflet-bar a:hover,
+.areas__map.leaflet-container .leaflet-bar a:focus {
+  width: 36px;
+  height: 36px;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-floating);
+  color: var(--color-teal);
+  font-family: var(--font-body);
+  line-height: 34px;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.areas__map.leaflet-container .leaflet-bar a:last-child {
+  border-bottom: 0;
+}
+
+.areas__map.leaflet-container .leaflet-bar a:hover {
+  background: var(--color-border);
+}
+
+.areas__map.leaflet-container .leaflet-bar a:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+.areas__map.leaflet-container .leaflet-bar a:active {
+  transform: scale(0.94);
+}
+
+.areas__map.leaflet-container .leaflet-bar a.leaflet-disabled {
+  background: var(--color-surface-elevated);
+  color: var(--color-muted);
+}
+
+.areas__map.leaflet-container .leaflet-control-attribution {
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-nav-bg);
+  color: var(--color-body);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.areas__map.leaflet-container .leaflet-control-attribution a {
+  color: var(--color-teal);
+  text-decoration: underline;
+}
+
+.areas__map.leaflet-container .leaflet-control-attribution a:hover {
+  color: var(--color-heading);
+}
+
+.areas__map.leaflet-container .leaflet-control-attribution a:active {
+  color: var(--color-teal-active);
+}
+
+/* Teal pin on the selected town */
+.areas__pin {
+  pointer-events: none;
+}
+
+.areas__pin svg {
+  width: 28px;
+  height: 36px;
+  overflow: visible;
+}
+
+.areas__pin-shape {
+  fill: var(--color-teal);
+  stroke: var(--color-bg);
+  stroke-width: 1.5;
+}
+
+.areas__pin-dot {
+  fill: var(--color-bg);
+}
+
+/* Town dots: a larger invisible click target around a small visible dot.
+   The dot is absolutely centred so it doesn't depend on stylesheet order
+   (Leaflet positions the click target itself absolutely). */
+.areas__dot {
+  cursor: pointer;
+}
+
+.areas__dot-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: var(--radius-pill);
+  background: var(--color-body);
+  box-shadow: 0 0 0 2px var(--color-bg);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.areas__dot:hover .areas__dot-mark {
+  transform: scale(1.4);
+}
+
+.areas__dot:active .areas__dot-mark {
+  transform: scale(1.2);
+}
+
+.areas__dot.is-selected {
+  display: none;
+}
+
+/* Bar under the map */
+.areas__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-elevated);
+}
+
+.areas__selected {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+}
+
+.areas__selected-label {
+  color: var(--color-muted);
+  font-family: var(--font-display);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-nav);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.areas__selected-name {
+  color: var(--color-heading);
+  font-family: var(--font-display);
+  font-size: var(--fs-card-title);
+  font-weight: 700;
+  letter-spacing: var(--tracking-heading);
+  line-height: 1.1;
+}
+
+.areas__cta {
+  gap: var(--space-2);
+}
+
+.areas__arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.areas__cta:hover .areas__arrow,
+.areas__cta:focus-visible .areas__arrow {
+  transform: translateX(4px);
+}
+
+/* Tablet — max-width 1024px */
+@media (max-width: 1024px) {
+  .areas__town {
+    padding-inline: var(--space-4);
+  }
+}
+
+/* Mobile — max-width 768px: one column (phone layout provisional) */
+@media (max-width: 768px) {
+  .areas__head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .areas__grid {
     grid-template-columns: minmax(0, 1fr);
   }
 }

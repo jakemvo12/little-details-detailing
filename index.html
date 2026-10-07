@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/areas.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -229,6 +230,78 @@
           <span>Also available: Clay Bar · Ceramic Coating · Shampoo</span>
           <a class="services__more-link" href="estimate.html">Ask about these in your quote</a>
         </p>
+      </div>
+    </section>
+
+    <section id="areas" class="areas" aria-labelledby="areas-title">
+      <div class="areas__inner">
+        <div class="areas__head">
+          <h2 id="areas-title" class="areas__title">Areas <span class="areas__title-muted">We Serve</span></h2>
+          <p class="areas__intro">We come to you across Coatesville and Chester County. Pick your town to see it on the map and start your free quote.</p>
+        </div>
+
+        <div class="areas__grid">
+          <div class="areas__side">
+            <!-- PLACEHOLDER TOWN LIST AND SERVICE CIRCLE — confirm towns and travel distance with Dowayne before launch. -->
+            <ul class="areas__list" role="list">
+            <li>
+              <button class="areas__town" type="button" aria-pressed="true" data-town="coatesville" data-name="Coatesville" data-lat="39.985152" data-lng="-75.819000">
+                <span class="areas__town-name">Coatesville</span>
+                <span class="areas__zip">19320</span>
+              </button>
+            </li>
+            <li>
+              <button class="areas__town" type="button" aria-pressed="false" data-town="thorndale" data-name="Thorndale" data-lat="40.000964" data-lng="-75.751652">
+                <span class="areas__town-name">Thorndale</span>
+                <span class="areas__zip">19372</span>
+              </button>
+            </li>
+            <li>
+              <button class="areas__town" type="button" aria-pressed="false" data-town="downingtown" data-name="Downingtown" data-lat="40.008289" data-lng="-75.702163">
+                <span class="areas__town-name">Downingtown</span>
+                <span class="areas__zip">19335</span>
+              </button>
+            </li>
+            <li>
+              <button class="areas__town" type="button" aria-pressed="false" data-town="exton" data-name="Exton" data-lat="40.029916" data-lng="-75.633061">
+                <span class="areas__town-name">Exton</span>
+                <span class="areas__zip">19341</span>
+              </button>
+            </li>
+            <li>
+              <button class="areas__town" type="button" aria-pressed="false" data-town="west-chester" data-name="West Chester" data-lat="39.959883" data-lng="-75.605422">
+                <span class="areas__town-name">West Chester</span>
+                <span class="areas__zip">19380</span>
+              </button>
+            </li>
+            <li>
+              <button class="areas__town" type="button" aria-pressed="false" data-town="parkesburg" data-name="Parkesburg" data-lat="39.960054" data-lng="-75.916161">
+                <span class="areas__town-name">Parkesburg</span>
+                <span class="areas__zip">19365</span>
+              </button>
+            </li>
+            <li>
+              <button class="areas__town" type="button" aria-pressed="false" data-town="kennett-square" data-name="Kennett Square" data-lat="39.843841" data-lng="-75.711296">
+                <span class="areas__town-name">Kennett Square</span>
+                <span class="areas__zip">19348</span>
+              </button>
+            </li>
+            </ul>
+            <p class="areas__call">Don't see your town? Call <a class="areas__call-link" href="tel:6107210339">610-721-0339</a> and ask.</p>
+          </div>
+
+          <div class="areas__main">
+            <!-- Map tiles: © OpenStreetMap contributors (https://www.openstreetmap.org/copyright). Leaflet 1.9.4, self-hosted in assets/vendor/leaflet/. -->
+            <div class="areas__map" id="areas-map" role="region" aria-label="Service area map" hidden></div>
+            <div class="areas__bar">
+              <p class="areas__selected" aria-live="polite" aria-atomic="true">
+                <span class="areas__selected-label">Selected area</span>
+                <span class="areas__selected-name">Coatesville</span>
+              </p>
+              <a class="btn btn--primary btn--lg areas__cta" href="estimate.html?area=coatesville">Get a Quote<svg class="areas__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
