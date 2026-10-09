@@ -97,6 +97,7 @@
       zoomAnimation: animate,
       fadeAnimation: animate,
       markerZoomAnimation: animate,
+      inertia: animate,
     });
 
     L.control.zoom({ position: 'topright' }).addTo(map);
@@ -110,7 +111,7 @@
     L.tileLayer(TILE_URL, { maxZoom: 19, attribution: ATTRIBUTION }).addTo(map);
 
     const teal = cssVar('--color-teal');
-    L.circle(center, {
+    const circle = L.circle(center, {
       radius,
       color: teal,
       weight: 2,
@@ -118,6 +119,10 @@
       fillOpacity: 0.15,
       interactive: false,
     }).addTo(map);
+    // The circle is decorative; the town list carries the information
+    const circleSvg = circle.getElement().closest('svg');
+    circleSvg.setAttribute('aria-hidden', 'true');
+    circleSvg.setAttribute('focusable', 'false');
 
     // Town dots: mouse/touch shortcut only — the list rows are the keyboard
     // and screen-reader control, so dots are hidden from assistive tech
