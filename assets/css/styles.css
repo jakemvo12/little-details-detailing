@@ -1546,6 +1546,19 @@ button {
   }
 }
 
+/* Small mobile — max-width 480px: stack the bar so the button never runs
+   past the screen ("Selected area" + town on top, full-width button below) */
+@media (max-width: 480px) {
+  .areas__bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .areas__cta {
+    width: 100%;
+  }
+}
+
 /* ==========================================================================
    Reduced motion
    ========================================================================== */
