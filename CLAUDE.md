@@ -59,8 +59,9 @@ Client Business Name/
 - Never work without GitHub set up from day one
 
 ## Image Rules
-- All images must come from Unsplash (unsplash.com) or Pexels 
+- All stock images must come from Unsplash (unsplash.com) or Pexels 
 (pexels.com) only
+- Exception: the client's own photos (their logo and their real job/portfolio photos) are allowed with the client's permission. Keep the original files in brand_assets/ and put web-ready resized copies in assets/images/ (job photos in assets/images/work/).
 - Never use Google images or any watermarked image
 - Always use direct image URLs (right click → Copy Image Address)
 - Never use Unsplash page URLs — always extract the direct 
@@ -180,7 +181,7 @@ Before any website goes live verify every item:
 - Favicon added using the business logo
 - Meta description added to all HTML files
 - Open Graph tags added to all HTML files
-- All images from Unsplash or Pexels only — no watermarks
+- All stock images from Unsplash or Pexels only — no watermarks; the client's own photos only with their permission (originals in brand_assets/, web copies in assets/images/)
 - All image file extensions lowercase
 - All folder names lowercase with hyphens
 - All images have alt text

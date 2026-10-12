@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/areas.js" defer></script>
+  <script src="assets/js/work.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -299,6 +300,123 @@
                 <span class="areas__selected-name">Coatesville</span>
               </p>
               <a class="btn btn--primary btn--lg areas__cta" href="estimate.html?area=coatesville">Get a Quote<svg class="areas__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="work" aria-labelledby="work-title" aria-roledescription="carousel">
+      <div class="work__inner">
+        <div class="work__head">
+          <h2 id="work-title" class="work__title">Cars <span class="work__title-muted">We've Detailed</span></h2>
+          <p class="work__intro">Real results from real driveways across Chester County.</p>
+        </div>
+
+        <div class="work__carousel">
+          <!--
+            HOW TO EDIT THIS SLIDESHOW (markup only: no JS or CSS changes needed)
+            - Each slide is one <li class="work-slide"> ... </li> block below. Copy, delete or reorder whole blocks.
+            - Before/after slide: two <figure>s, the "before" figure first, then the "after" figure.
+            - After-only slide: delete the "before" <figure>; the "after" photo is centred automatically.
+            - Slide numbers, the "Slide N of N" labels, the dots and the counter all update automatically.
+            - To use a real photo, replace the placeholder line
+                <div class="work-photo__placeholder">Before photo</div>
+              with an image (keep the tag <span> above it):
+                <img src="assets/images/work/civic-before-1200.jpg"
+                     srcset="assets/images/work/civic-before-800.jpg 800w,
+                             assets/images/work/civic-before-1200.jpg 1200w,
+                             assets/images/work/civic-before-1600.jpg 1600w"
+                     sizes="(max-width: 768px) 100vw, 600px"
+                     width="1200" height="900"
+                     alt="Describe the car and what changed, e.g. Gray Honda Civic interior before detailing, with dusty dash and stained seats"
+                     loading="lazy">
+            - Photos are 4:3 (landscape). Keep the originals in brand_assets/ and put web-ready resized copies in
+              assets/images/work/ (lowercase file names with hyphens, .jpg not .JPG).
+          -->
+          <!-- PLACEHOLDER SLIDES — replace with Dowayne's real photos. This section must NOT go live with placeholders; hide it if no photos are available at launch. -->
+          <ol class="work__slides">
+          <!-- Slide: before/after pair -->
+          <li class="work-slide">
+            <figure class="work-photo work-photo--before">
+              <span class="work-photo__tag work-photo__tag--before">Before</span>
+              <div class="work-photo__placeholder">Before photo</div>
+            </figure>
+            <figure class="work-photo work-photo--after">
+              <span class="work-photo__tag work-photo__tag--after">After</span>
+              <div class="work-photo__placeholder">After photo</div>
+            </figure>
+          </li>
+          <!-- Slide: before/after pair -->
+          <li class="work-slide">
+            <figure class="work-photo work-photo--before">
+              <span class="work-photo__tag work-photo__tag--before">Before</span>
+              <div class="work-photo__placeholder">Before photo</div>
+            </figure>
+            <figure class="work-photo work-photo--after">
+              <span class="work-photo__tag work-photo__tag--after">After</span>
+              <div class="work-photo__placeholder">After photo</div>
+            </figure>
+          </li>
+          <!-- Slide: before/after pair -->
+          <li class="work-slide">
+            <figure class="work-photo work-photo--before">
+              <span class="work-photo__tag work-photo__tag--before">Before</span>
+              <div class="work-photo__placeholder">Before photo</div>
+            </figure>
+            <figure class="work-photo work-photo--after">
+              <span class="work-photo__tag work-photo__tag--after">After</span>
+              <div class="work-photo__placeholder">After photo</div>
+            </figure>
+          </li>
+          <!-- Slide: before/after pair -->
+          <li class="work-slide">
+            <figure class="work-photo work-photo--before">
+              <span class="work-photo__tag work-photo__tag--before">Before</span>
+              <div class="work-photo__placeholder">Before photo</div>
+            </figure>
+            <figure class="work-photo work-photo--after">
+              <span class="work-photo__tag work-photo__tag--after">After</span>
+              <div class="work-photo__placeholder">After photo</div>
+            </figure>
+          </li>
+          <!-- Slide: before/after pair -->
+          <li class="work-slide">
+            <figure class="work-photo work-photo--before">
+              <span class="work-photo__tag work-photo__tag--before">Before</span>
+              <div class="work-photo__placeholder">Before photo</div>
+            </figure>
+            <figure class="work-photo work-photo--after">
+              <span class="work-photo__tag work-photo__tag--after">After</span>
+              <div class="work-photo__placeholder">After photo</div>
+            </figure>
+          </li>
+          <!-- Slide: after-only -->
+          <li class="work-slide">
+            <figure class="work-photo work-photo--after">
+              <span class="work-photo__tag work-photo__tag--after">After</span>
+              <div class="work-photo__placeholder">After photo</div>
+            </figure>
+          </li>
+          </ol>
+
+          <div class="work__controls" hidden>
+            <button class="work__btn work__btn--toggle" type="button">
+              <svg class="work__icon work__icon--pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+              <svg class="work__icon work__icon--play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+              <span class="work__toggle-text">Pause</span><span class="visually-hidden"> slideshow</span>
+            </button>
+            <div class="work__position">
+              <div class="work__dots"></div>
+              <p class="work__counter" aria-hidden="true">01 / 06</p>
+            </div>
+            <div class="work__nav">
+              <button class="work__btn work__btn--icon work__prev" type="button" aria-label="Previous slide">
+                <svg class="work__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+              </button>
+              <button class="work__btn work__btn--icon work__next" type="button" aria-label="Next slide">
+                <svg class="work__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
             </div>
           </div>
         </div>
