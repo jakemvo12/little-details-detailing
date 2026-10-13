@@ -2010,6 +2010,217 @@ button {
 }
 
 /* ==========================================================================
+   Reviews We've Earned
+   Real Google reviews, verbatim. Equal-height cards per row with the
+   name/date footer pinned to the bottom. No JavaScript.
+   ========================================================================== */
+
+.reviews {
+  padding: var(--section-pad);
+  background: var(--color-bg);
+}
+
+.reviews__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.reviews__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-7);
+}
+
+.reviews__title {
+  font-size: var(--fs-section-title);
+}
+
+.reviews__title-muted {
+  color: var(--color-muted);
+}
+
+/* Rating summary: links to the Google listing */
+.reviews__rating {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-block: var(--space-1);
+  color: var(--color-body);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.reviews__rating::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-teal);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.reviews__rating:hover::after,
+.reviews__rating:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.reviews__rating:active {
+  transform: translateY(1px);
+}
+
+.reviews__score {
+  color: var(--color-heading);
+  font-family: var(--font-display);
+  font-size: var(--fs-card-title);
+  font-weight: 700;
+  letter-spacing: var(--tracking-heading);
+  line-height: 1;
+}
+
+.reviews__rating-stars,
+.review-card__stars {
+  display: inline-flex;
+  gap: 2px;
+  color: var(--color-teal);
+}
+
+.reviews__rating-stars svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Grid: three per row on desktop, rows share one height */
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: var(--space-5);
+}
+
+.review-card {
+  display: flex;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-elevated);
+}
+
+.review-card__figure {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: 0;
+  padding: var(--space-6);
+}
+
+.review-card__stars {
+  margin-bottom: var(--space-4);
+}
+
+.review-card__stars svg {
+  width: 16px;
+  height: 16px;
+}
+
+.review-card__quote {
+  flex: 1;
+  margin: 0;
+  color: var(--color-body);
+}
+
+.review-card__quote p {
+  margin: 0 0 var(--space-3);
+}
+
+.review-card__quote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Footer pinned to the bottom of every card */
+.review-card__meta {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: var(--fs-small);
+}
+
+.review-card__name {
+  color: var(--color-heading);
+  font-weight: 600;
+}
+
+/* "Read all reviews on Google" — same style as the Services text link */
+.reviews__more {
+  margin: var(--space-6) 0 0;
+}
+
+.reviews__more-link {
+  position: relative;
+  display: inline-block;
+  padding-block: var(--space-1);
+  color: var(--color-teal);
+  font-family: var(--font-display);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-nav);
+  line-height: 1;
+  text-transform: uppercase;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.reviews__more-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-teal);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.reviews__more-link:hover::after,
+.reviews__more-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.reviews__more-link:active {
+  transform: translateY(1px);
+}
+
+/* Tablet — max-width 1024px: two per row */
+@media (max-width: 1024px) {
+  .reviews__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile — max-width 768px: one column (phone layout provisional) */
+@media (max-width: 768px) {
+  .reviews__head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reviews__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .review-card__figure {
+    padding: var(--space-5);
+  }
+}
+
+/* ==========================================================================
    Reduced motion
    ========================================================================== */
 
