@@ -1885,6 +1885,131 @@ button {
 }
 
 /* ==========================================================================
+   Why Little Details
+   Desktop: tall 4:5 photo frame left (~5/12), heading + sentence + 2×2
+   reasons right, vertically centred. No JavaScript.
+   ========================================================================== */
+
+.why {
+  padding: var(--section-pad);
+  background: var(--color-bg);
+}
+
+.why__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: center;
+  gap: var(--space-8);
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Photo frame — same placeholder look as the slideshow */
+.why__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-elevated);
+}
+
+.why__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.why__placeholder {
+  position: absolute;
+  inset: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-muted);
+  font-size: var(--fs-small);
+  text-align: center;
+}
+
+.why__title {
+  margin-bottom: var(--space-4);
+  font-size: var(--fs-section-title);
+}
+
+.why__title-muted {
+  color: var(--color-muted);
+}
+
+.why__intro {
+  max-width: 34rem;
+  margin: 0 0 var(--space-7);
+  color: var(--color-body);
+}
+
+/* Reasons: plain blocks in a 2×2 grid */
+.why__reasons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-7) var(--space-6);
+}
+
+.why-reason__tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-elevated);
+}
+
+.why-reason__icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-teal);
+}
+
+.why-reason__title {
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-card-title);
+}
+
+.why-reason__text {
+  margin: 0;
+  color: var(--color-body);
+}
+
+/* Tablet — max-width 1024px: still side by side, slightly tighter */
+@media (max-width: 1024px) {
+  .why__inner {
+    gap: var(--space-7);
+  }
+}
+
+/* Mobile — max-width 768px: text first, then the photo; reasons in one
+   column (phone layout provisional) */
+@media (max-width: 768px) {
+  .why__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .why__media {
+    order: 2;
+  }
+
+  .why__reasons {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ==========================================================================
    Reduced motion
    ========================================================================== */
 
