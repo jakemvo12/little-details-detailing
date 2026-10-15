@@ -2281,6 +2281,222 @@ button {
 }
 
 /* ==========================================================================
+   Site footer
+   Brand (2fr) + Navigation + Services (inside the Footer nav, a subgrid
+   spanning two columns) + Contact. Reusable on every page.
+   ========================================================================== */
+
+.site-footer {
+  padding: var(--space-9) 0 var(--space-6);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.site-footer__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
+  gap: var(--space-7);
+}
+
+/* The Footer nav spans two grid columns and shares the parent's tracks */
+.site-footer__nav {
+  display: grid;
+  grid-column: span 2;
+  grid-template-columns: subgrid;
+}
+
+/* Brand column */
+.site-footer__logo {
+  display: inline-block;
+  border-radius: var(--radius-md);
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    opacity var(--dur-base) var(--ease-out);
+}
+
+.site-footer__logo img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.site-footer__logo:hover,
+.site-footer__logo:focus-visible {
+  opacity: 0.85;
+}
+
+.site-footer__logo:active {
+  transform: scale(0.97);
+}
+
+.site-footer__tagline {
+  max-width: 26rem;
+  margin: var(--space-5) 0 var(--space-5);
+  color: var(--color-body);
+}
+
+.site-footer__social {
+  display: flex;
+  gap: var(--space-3);
+}
+
+/* 44px outline tiles: lighter surface fades in on hover, slight press */
+.site-footer__social-link {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap-size);
+  height: var(--tap-size);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-teal);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.site-footer__social-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--color-surface-floating);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.site-footer__social-link:hover::before,
+.site-footer__social-link:focus-visible::before {
+  opacity: 1;
+}
+
+.site-footer__social-link:active {
+  transform: scale(0.94);
+}
+
+.site-footer__icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Link columns */
+.site-footer__heading {
+  margin-bottom: var(--space-5);
+  color: var(--color-teal);
+  font-family: var(--font-display);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-nav);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.site-footer__links {
+  display: grid;
+  gap: var(--space-3);
+}
+
+/* Links: colour change only (not animated) */
+.site-footer__link {
+  color: var(--color-body);
+}
+
+.site-footer__link:hover,
+.site-footer__link:focus-visible {
+  color: var(--color-teal);
+}
+
+.site-footer__link:active {
+  color: var(--color-teal-active);
+}
+
+/* Contact */
+.site-footer__contact {
+  display: grid;
+  gap: var(--space-3);
+  font-style: normal;
+}
+
+.site-footer__contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin: 0;
+  color: var(--color-body);
+}
+
+.site-footer__contact-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 0.3em;
+  color: var(--color-teal);
+}
+
+/* Bottom bar */
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-6);
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: var(--fs-label);
+}
+
+.site-footer__copy,
+.site-footer__badges {
+  margin: 0;
+}
+
+.site-footer__quote-link {
+  color: var(--color-teal);
+}
+
+.site-footer__quote-link:hover,
+.site-footer__quote-link:focus-visible {
+  color: var(--color-heading);
+}
+
+.site-footer__quote-link:active {
+  color: var(--color-teal-active);
+}
+
+/* Tablet — max-width 1024px: brand full-width above three link columns */
+@media (max-width: 1024px) {
+  .site-footer__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .site-footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Mobile — max-width 768px: simple stack (phone layout provisional) */
+@media (max-width: 768px) {
+  .site-footer__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-footer__nav {
+    grid-column: auto;
+    row-gap: var(--space-7);
+  }
+}
+
+/* ==========================================================================
    Reduced motion
    ========================================================================== */
 
