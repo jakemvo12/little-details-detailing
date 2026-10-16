@@ -111,6 +111,9 @@
 
   /* Closing call to action */
   --fs-cta-title: clamp(2.5rem, 1.5rem + 2.8vw, 4rem);
+
+  /* Quote page */
+  --form-placeholder-height: 35rem;
 }
 
 /* Small-viewport units keep mobile browser toolbars from breaking the hero */
@@ -2493,6 +2496,173 @@ button {
   .site-footer__nav {
     grid-column: auto;
     row-gap: var(--space-7);
+  }
+}
+
+/* ==========================================================================
+   Quote page (estimate.html)
+   Heading + intro, then the form placeholder (~7/12) beside the
+   "What happens next" panel (~5/12). No JavaScript.
+   ========================================================================== */
+
+.quote {
+  padding: var(--section-pad);
+  background: var(--color-bg);
+}
+
+.quote__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.quote__head {
+  margin-bottom: var(--space-7);
+}
+
+.quote__title {
+  margin-bottom: var(--space-4);
+  font-size: var(--fs-section-title);
+}
+
+.quote__title-muted {
+  color: var(--color-muted);
+}
+
+.quote__intro {
+  max-width: 36rem;
+  margin: 0;
+  color: var(--color-body);
+}
+
+.quote__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: start;
+  gap: var(--space-7);
+}
+
+/* Form placeholder — same look as the site's photo placeholders */
+.quote__form {
+  position: relative;
+  height: var(--form-placeholder-height);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-elevated);
+}
+
+.quote__placeholder {
+  position: absolute;
+  inset: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-muted);
+  font-size: var(--fs-small);
+  text-align: center;
+}
+
+/* Side panel */
+.quote-panel {
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-elevated);
+}
+
+.quote-panel__title {
+  margin-bottom: var(--space-5);
+  font-size: var(--fs-card-title);
+}
+
+.quote-steps {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quote-step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+/* Teal numeral in a 36px outlined circle (decorative; the <ol> numbers it) */
+.quote-step__num {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--color-teal);
+  border-radius: var(--radius-pill);
+  color: var(--color-teal);
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.quote-step__title {
+  margin-bottom: var(--space-1);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.4;
+}
+
+.quote-step__text {
+  margin: 0;
+  color: var(--color-body);
+  font-size: var(--fs-small);
+}
+
+.quote-panel__talk {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+.quote-panel__talk-title {
+  margin: 0 0 var(--space-3);
+  color: var(--color-heading);
+  font-weight: 600;
+}
+
+.quote-panel__call {
+  width: 100%;
+}
+
+.quote-panel__area {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin: var(--space-5) 0 0;
+  color: var(--color-body);
+  font-size: var(--fs-small);
+}
+
+.quote-panel__icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 0.15em;
+  color: var(--color-teal);
+}
+
+/* Mobile — max-width 768px: form placeholder first, then the panel
+   (phone layout provisional) */
+@media (max-width: 768px) {
+  .quote__grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
