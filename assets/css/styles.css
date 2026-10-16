@@ -114,6 +114,9 @@
 
   /* Quote page */
   --form-placeholder-height: 35rem;
+
+  /* FAQ */
+  --fs-faq-question: 1.125rem;
 }
 
 /* Small-viewport units keep mobile browser toolbars from breaking the hero */
@@ -2662,6 +2665,152 @@ button {
    (phone layout provisional) */
 @media (max-width: 768px) {
   .quote__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ==========================================================================
+   FAQ (native <details>/<summary>, no JavaScript)
+   Heading left (~5/12), questions right (~7/12).
+   ========================================================================== */
+
+.faq {
+  padding: var(--section-pad);
+  background: var(--color-bg);
+}
+
+.faq__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: start;
+  gap: var(--space-7);
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.faq__title {
+  font-size: var(--fs-section-title);
+}
+
+.faq__title-muted {
+  color: var(--color-muted);
+}
+
+.faq__list {
+  border-top: 1px solid var(--color-border);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Question row: text left, icon right; default disclosure marker removed */
+.faq-item__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-5) 0;
+  color: var(--color-heading);
+  font-size: var(--fs-faq-question);
+  font-weight: 600;
+  line-height: 1.4;
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-item__q::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item__q::marker {
+  content: '';
+}
+
+/* Hover: question text turns teal (colour change, not animated) */
+.faq-item__q:hover .faq-item__q-text,
+.faq-item__q:focus-visible .faq-item__q-text {
+  color: var(--color-teal);
+}
+
+.faq-item__q:active .faq-item__q-text {
+  color: var(--color-teal-active);
+}
+
+/* Teal plus, rotates 45° into an "×" when open (transform only) */
+.faq-item__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.faq-item__icon::before,
+.faq-item__icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 2px;
+  margin: -1px 0 0 -10px;
+  border-radius: var(--radius-sm);
+  background: var(--color-teal);
+}
+
+.faq-item__icon::after {
+  transform: rotate(90deg);
+}
+
+.faq-item[open] .faq-item__icon {
+  transform: rotate(45deg);
+}
+
+.faq-item__a {
+  max-width: 40rem;
+  padding-bottom: var(--space-5);
+}
+
+.faq-item__text {
+  margin: 0;
+  color: var(--color-body);
+}
+
+.faq-item__link {
+  color: var(--color-teal);
+  text-decoration: underline;
+}
+
+.faq-item__link:hover,
+.faq-item__link:focus-visible {
+  color: var(--color-heading);
+}
+
+.faq-item__link:active {
+  color: var(--color-teal-active);
+}
+
+/* Draft tag: small outlined pill on its own line */
+.faq-item__draft {
+  display: inline-block;
+  margin: var(--space-3) 0 0;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-muted);
+  font-family: var(--font-display);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-nav);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* Mobile — max-width 768px: heading above the list (phone layout provisional) */
+@media (max-width: 768px) {
+  .faq__inner {
     grid-template-columns: minmax(0, 1fr);
   }
 }
